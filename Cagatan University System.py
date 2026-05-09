@@ -4,7 +4,7 @@ import os
 print("======== STUDENT RECORD SYSTEM ========")
 print("\nHello Rhuddens!\n\nWelcome to Cagatan University Student Record System!\n")
 
-//menu option
+#menu option
 def main_menu():
     print("======================================")
     print("Please select an option:")
@@ -25,8 +25,7 @@ def main():
         else:
             print("Invalid. Please try again.")
 
-//add student option
-
+#add student option
 file_name = "students.txt"
 
 def hash_id(student_ID):
@@ -65,30 +64,8 @@ def add_student():
                 )
         
             print("STUDENT RECORD ADDED SUCESSFULLY!")
-            print("\nHello Rhuddens!\n\nWelcome to Cagatan University Student Record System!\n")
 
-//menu option
-def main_menu():
-    print("======================================")
-    print("Please select an option:")
-    print("1. Add Student")
-    print("2. Exit")
-    print("======================================")  
 
-def main():
-    while True:
-        main_menu()
-        choice = input("Enter your choice: \n")
-        
-        if choice == "1":
-            add_student()
-        elif choice == "2":
-            print("Exiting program. Goodbye Rhuddens!")
-            break
-        else:
-            print("Invalid. Please try again.")
-
-//add student option
             
 
       
