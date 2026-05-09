@@ -65,7 +65,9 @@ def add_student():
         
             print("STUDENT RECORD ADDED SUCESSFULLY!")
 
+#calling area
 
+main()
             
 
       
