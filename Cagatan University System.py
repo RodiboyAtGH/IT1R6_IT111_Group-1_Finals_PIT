@@ -60,7 +60,6 @@ def add_student():
             file.write(
                 f"{hashed_id}|{name}|{age}|{student_ID}|"
                 f"{password}|{section}|{year_level}|{course}\n"
-                
                 )
         
             print("STUDENT RECORD ADDED SUCESSFULLY!")
