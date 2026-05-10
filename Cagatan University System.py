@@ -11,7 +11,9 @@ def main_menu():
     print("1. Add Student")
     print("2. View Student Records")
     print("3. Search Student Record")
-    print("4. Exit")
+    print("4. Delete Student Record")
+    print("5. Update Student Record")
+    print("6. Exit")
     print("======================================")  
 
 #add student option
@@ -90,6 +92,10 @@ def main():
         elif choice == "3":
             search_student()
         elif choice == "4":
+            delete_student()
+        elif choice == "5":
+            update_student()
+        elif choice == "6":
             print("Exiting program. Goodbye Rhuddens!")
             break
         else:
@@ -184,6 +190,7 @@ def update_student():
                 print("Student record updated successfully.")
             else:
                 file.write(record)
+
 
       
 
