@@ -54,7 +54,7 @@ def add_student():
             f"{password}|{section}|{year_level}|{course}\n"
                 )
                             
-    print("STUDENT RECORD ADDED SUCESSFULLY!")
+    print("\n\nSTUDENT RECORD ADDED SUCESSFULLY!")
 
 #view student records
 def view_students():
@@ -73,36 +73,13 @@ def view_students():
             data = record.strip().split("|")
 
             print(
-                f"Name: {data[1]} | "
+                f"Name: {data[1]}  | "
                 f"Age: {data[2]} | "
                 f"Course: {data[7]} | "
                 f"Section: {data[5]} | "
                 f"ID: {data[3]}"
             )
-        
-def main():
-    while True:
-        main_menu()
-        choice = input("Enter your choice: ")
-        
-        if choice == "1":
-            add_student()
-        elif choice == "2":
-            view_students()
-        elif choice == "3":
-            search_student()
-        elif choice == "4":
-            delete_student()
-        elif choice == "5":
-            update_student()
-        elif choice == "6":
-            print("Exiting program. Goodbye Rhuddens!")
-            break
-        else:
-            print("Invalid. Please try again.")
 
-#calling area
-main()
 
 #Search student record
 def search_student():
@@ -120,7 +97,7 @@ def search_student():
         for record in records:
             data = record.strip().split("|")
 
-            if data[0] == hash_id:
+            if data[3] == search_id:
                 print("\nStudent Found!")
                 print("--------------------------")
                 print(f"Name        : {data[1]}")
@@ -156,7 +133,7 @@ def delete_student():
                 file.write(record)
             else:
                 print("Student record deleted successfully.")
-                return
+
             
 #Update or edit student record
 def update_student():
@@ -191,7 +168,29 @@ def update_student():
             else:
                 file.write(record)
 
+def main():
+    while True:
+        main_menu()
+        choice = input("Enter your choice: ")
+        
+        if choice == "1":
+            add_student()
+        elif choice == "2":
+            view_students()
+        elif choice == "3":
+            search_student()
+        elif choice == "4":
+            delete_student()
+        elif choice == "5":
+            update_student()
+        elif choice == "6":
+            print("Exiting program. Goodbye Rhuddens!")
+            break
+        else:
+            print("Invalid. Please try again.")
 
+#calling area
+main()
       
 
     
