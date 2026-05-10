@@ -10,7 +10,8 @@ def main_menu():
     print("Please select an option:")
     print("1. Add Student")
     print("2. View Student Records")
-    print("3. Exit")
+    print("3. Search Student Record")
+    print("4. Exit")
     print("======================================")  
 
 #add student option
@@ -59,7 +60,7 @@ def view_students():
     print("\n======== STUDENT RECORDS ========\n")
 
     if not os.path.exists(file_name):
-        print("No student records found!!\n")
+        print("Error. No student records found!\n")
         return
     
     with open(file_name, "r") as file:
@@ -87,6 +88,8 @@ def main():
         elif choice == "2":
             view_students()
         elif choice == "3":
+            search_student()
+        elif choice == "4":
             print("Exiting program. Goodbye Rhuddens!")
             break
         else:
@@ -94,6 +97,93 @@ def main():
 
 #calling area
 main()
+
+#Search student record
+def search_student():
+    print("\n======== SEARCH STUDENT RECORD ========\n")
+    search_id = input("Enter Student ID to search: ")
+    hashed_search_id = hash_id(search_id)
+
+    if not os.path.exists(file_name):
+        print("Error. No student records found!\n")
+        return
+    
+    with open(file_name, "r") as file:
+        records = file.readlines()
+
+        for record in records:
+            data = record.strip().split("|")
+
+            if data[0] == hash_id:
+                print("\nStudent Found!")
+                print("--------------------------")
+                print(f"Name        : {data[1]}")
+                print(f"Age         : {data[2]}")
+                print(f"Student ID  : {data[3]}")
+                print(f"Password    : {data[4]}")
+                print(f"Section     : {data[5]}")
+                print(f"Year Level  : {data[6]}")
+                print(f"Course      : {data[7]}")
+                print("--------------------------")
+                return
+        
+        print("Student record not found.")
+
+#Delete student record
+def delete_student():
+    print("\n======== DELETE STUDENT RECORD ========\n")
+    delete_id = input("Enter Student ID to delete: ")
+    hashed_delete_id = hash_id(delete_id)
+
+    if not os.path.exists(file_name):
+        print("Error. No student records found!\n")
+        return
+    
+    with open(file_name, "r") as file:
+        records = file.readlines()
+
+    with open(file_name, "w") as file:
+        for record in records:
+            data = record.strip().split("|")
+
+            if data[0] != hashed_delete_id:
+                file.write(record)
+            else:
+                print("Student record deleted successfully.")
+                return
+            
+#Update or edit student record
+def update_student():
+    print("\n======== UPDATE STUDENT RECORD ========\n")
+    update_id = input("Enter Student ID to update: ")
+    hashed_update_id = hash_id(update_id)
+
+    if not os.path.exists(file_name):
+        print("Error. No student records found!\n")
+        return
+    
+    with open(file_name, "r") as file:
+        records = file.readlines()
+
+    with open(file_name, "w") as file:
+        for record in records:
+            data = record.strip().split("|")
+
+            if data[0] == hashed_update_id:
+                print("Enter new details (leave blank to keep current value):")
+                name = input(f"Name ({data[1]}): ") or data[1]
+                age = input(f"Age ({data[2]}): ") or data[2]
+                section = input(f"Section ({data[5]}): ") or data[5]
+                year_level = input(f"Year Level ({data[6]}): ") or data[6]
+                course = input(f"Course ({data[7]}): ") or data[7]
+
+                file.write(
+                    f"{hashed_update_id}|{name}|{age}|{data[3]}|"
+                    f"{data[4]}|{section}|{year_level}|{course}\n"
+                )
+                print("Student record updated successfully.")
+            else:
+                file.write(record)
 
       
 
