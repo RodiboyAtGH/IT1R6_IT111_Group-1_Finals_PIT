@@ -80,7 +80,7 @@ def view_students():
 def main():
     while True:
         main_menu()
-        choice = input("Enter your choice: \n")
+        choice = input("Enter your choice: ")
         
         if choice == "1":
             add_student()
